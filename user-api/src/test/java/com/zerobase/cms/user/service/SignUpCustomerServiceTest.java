@@ -4,11 +4,10 @@ import com.zerobase.cms.user.domain.SignUpForm;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class SignUpCustomerServiceTest {
@@ -29,7 +28,11 @@ class SignUpCustomerServiceTest {
                 .build();
 
         // then
-        Assert.isTrue(service.signUp(form).getId()!=null);
+        assertEquals(1L, service.signUp(form).getId());
+        assertEquals("name", service.signUp(form).getName());
+        assertEquals("abc@gmail.com", service.signUp(form).getEmail());
+        assertEquals("1", service.signUp(form).getPassword());
+        assertEquals("01000000000", service.signUp(form).getPhone());
 
     }
 
