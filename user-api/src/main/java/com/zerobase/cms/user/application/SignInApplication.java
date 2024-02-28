@@ -19,6 +19,7 @@ public class SignInApplication {
 
     private final CustomerService customerService;
     private final SellerService sellerService;
+
     private final JwtAuthenticationProvider provider;
 
     public String customerLoginToken(SignInForm form) {
