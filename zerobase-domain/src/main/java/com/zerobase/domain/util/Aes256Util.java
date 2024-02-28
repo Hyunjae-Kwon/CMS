@@ -21,8 +21,9 @@ public class Aes256Util {
                     new IvParameterSpec(IV.getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParameterSpec);
 
-            byte[] encrypted = cipher.doFinal(
-                    text.getBytes(StandardCharsets.UTF_8));
+            byte[] encrypted = cipher
+                    .doFinal(text.getBytes(StandardCharsets.UTF_8));
+
             return Base64.encodeBase64String(encrypted);
         } catch (Exception e) {
             return null;
@@ -38,8 +39,9 @@ public class Aes256Util {
                     new IvParameterSpec(IV.getBytes(StandardCharsets.UTF_8));
             cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParameterSpec);
 
-            byte[] decodedBytes = Base64.decodeBase64(cipherText);
-            byte[] decrypted = cipher.doFinal(decodedBytes);
+            byte[] decodeBytes = Base64.decodeBase64(cipherText);
+            byte[] decrypted = cipher.doFinal(decodeBytes);
+
             return new String(decrypted, StandardCharsets.UTF_8);
         } catch (Exception e) {
             return null;
